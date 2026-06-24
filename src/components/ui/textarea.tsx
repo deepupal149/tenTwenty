@@ -1,0 +1,19 @@
+import * as React from "react"
+
+import { classNames } from "@/lib/utils"
+
+/** Multiline text field matching the <Input> primitive's look and a11y states. */
+function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
+  return (
+    <textarea
+      data-slot="textarea"
+      className={classNames(
+        "w-full resize-none rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20",
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+export { Textarea }
