@@ -7,7 +7,7 @@ import { render, screen } from "@testing-library/react";
 const auth = vi.fn();
 // Next's redirect throws to halt the render — mirror that so the guard short-
 // circuits exactly as in production.
-const redirect = vi.fn((_url: string) => {
+const redirect = vi.fn(() => {
   throw new Error("NEXT_REDIRECT");
 });
 const listTimesheets = vi.fn(() => ({ rows: [], total: 0 }));

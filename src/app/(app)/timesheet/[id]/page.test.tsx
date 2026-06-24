@@ -5,7 +5,7 @@ import type { Timesheet } from "@/lib/types";
 const auth = vi.fn();
 // Mirror Next's real redirect: it throws to halt the render. Tests that expect
 // a redirect therefore await a rejection, then assert the recorded target.
-const redirect = vi.fn((_url: string) => {
+const redirect = vi.fn(() => {
   throw new Error("NEXT_REDIRECT");
 });
 const getTimesheet = vi.fn();

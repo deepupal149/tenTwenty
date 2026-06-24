@@ -12,6 +12,9 @@ import { loginSchema } from "./validation";
  * in the session, never exposed to client JS or localStorage.
  */
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  // Self-hosted prod (`next start`) doesn't auto-trust the request host the way
+  // dev/Vercel do; without this every /api/auth/* call 500s with UntrustedHost.
+  trustHost: true,
   session: { strategy: "jwt" },
   pages: { signIn: "/login" },
   providers: [
