@@ -1,11 +1,26 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { Popover } from "@base-ui/react/popover";
 import { CalendarDays, ChevronDown } from "lucide-react";
-import { Calendar, type DateRange } from "@/components/ui/calendar";
+import type { DateRange } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import { classNames } from "@/lib/utils";
+
+// react-day-picker is heavy and only needed once the popover opens — defer its
+// chunk out of the initial dashboard bundle to cut hydration/TBT on load.
+const Calendar = dynamic(
+  () => import("@/components/ui/calendar").then((m) => m.Calendar),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-[19rem] w-[18rem] items-center justify-center text-sm text-gray-400 sm:w-[34rem]">
+        Loading…
+      </div>
+    ),
+  },
+);
 
 interface Props {
   value: DateRange;
