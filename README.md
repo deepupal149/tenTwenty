@@ -5,6 +5,12 @@ assessment. Log in, browse weekly timesheets in a responsive, filterable and
 paginated table, drill into a week to log individual task entries, and
 create / edit / delete entries through validated modal forms.
 
+## Live demo
+
+**https://tentwenty-mu.vercel.app** (deployed on Vercel)
+
+Log in with the demo credentials below.
+
 ## Tech stack
 
 | Concern          | Choice                              | Why |
